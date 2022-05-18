@@ -22,7 +22,6 @@ namespace Server.listener
                 server.BeginAcceptTcpClient(DoBeginAcceptTcpClient, server);
                 ICommunicator communicator = new TCPCommunicator(tcpClient);
                 _onConnect(communicator);
-                //Console.WriteLine("TCP Connected with: " + tcpClient.Client.RemoteEndPoint);
             }
             catch (Exception ex)
             {

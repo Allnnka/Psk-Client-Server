@@ -44,9 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Clients\IClient.cs" />
+    <Compile Include="Clients\RS232Clients.cs" />
     <Compile Include="Clients\TcpClients.cs" />
     <Compile Include="Clients\UdpClients.cs" />
+    <Compile Include="command\Ping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="command\CommandUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

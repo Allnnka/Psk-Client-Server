@@ -40,11 +40,10 @@ namespace Server
         {
             listeners.Add(listener);
             listener.Start(new CommunicatorD(AddCommunicator));
-          
         }
         void Start()
         {
-            for (int i = 0; i < listeners.Count; i++) 
+            for (int i = 0; i < listeners.Count; i++)
                 listeners[i].Start(new CommunicatorD(AddCommunicator));
         }
         public void AddServiceModule(string command, IServiceModule serviceModule)
@@ -59,8 +58,8 @@ namespace Server
             server.Start();
             server.AddListener(new TCPListener());
             server.AddListener(new UDPListener());
+            //server.AddListener(new RS232Listener());
             while (true) { }
         }
-
     }
 }
