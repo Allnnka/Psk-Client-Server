@@ -49,6 +49,7 @@
     <Compile Include="listener\RS232Listener.cs" />
     <Compile Include="listener\TCPListener.cs" />
     <Compile Include="listener\UDPListener.cs" />
+    <Compile Include="service\ChatService.cs" />
     <Compile Include="service\PingPongService.cs" />
     <Compile Include="shared\Delegate.cs" />
     <Compile Include="shared\ICommunicator.cs" />

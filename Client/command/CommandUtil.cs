@@ -9,26 +9,21 @@ namespace Client.util
     {
         public static void getCommand(IClient client)
         {
-            Console.WriteLine("Wpisz komendę(ping lub ...)");
+            Console.WriteLine("Wpisz komendę(ping, chat lub file)");
             string command = Console.ReadLine();
             if (command.Contains("ping "))
             {
                 Ping.Command(client,command);
             }
-            if (command.Contains("send "))
+            else if (command.Contains("chat "))
             {
-                
+                ChatCommand.Msg(client, command);
             }
             else
             {
-                Console.WriteLine("Opcji nie ma na liście!\n Wciśnij 1 żeby spróbować ponownie 0 - żeby wyjść");
-                string command2 = Console.ReadLine();
-                if (int.Parse(command2) == 1)
-                {
-                    getCommand(client);
-                }
-                
+                Console.WriteLine("Wprowadzono niepoprawną komendę {0}",command);
             }
+            getCommand(client);
         }
     }
 }

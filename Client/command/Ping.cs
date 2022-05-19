@@ -17,7 +17,7 @@ namespace Client.command
             int numOfResponse = int.Parse(message.Split()[1]);
             for (int i = 0; i < numOfResponse; i++)
             {
-                string responseStr = string.Empty;
+                string responseStr = string.Empty;  
                 responseStr = client.QA(PingClass.Ping(int.Parse(message.Split()[1]), int.Parse(message.Split()[2])));
                 Console.WriteLine($"[{i + 1}] Odpowiedź: {responseStr}");
             }

@@ -52,9 +52,10 @@ namespace Server
         }
 
         static void Main()
-        {
+        {        
             var server = new Server();
             server.AddServiceModule("ping", new PingPongService());
+            server.AddServiceModule("chat", new ChatService());
             server.Start();
             server.AddListener(new TCPListener());
             server.AddListener(new UDPListener());
