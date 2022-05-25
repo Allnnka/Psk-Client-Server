@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Server.communicator
 {
@@ -44,10 +41,6 @@ namespace Server.communicator
                 catch { onDisconnect(this); Stop(); };
             }
             networkStream.Close();
-            //string message = onCommand("pong 123");
-            // byte[] bytes = Encoding.ASCII.GetBytes(message);
-            //Console.WriteLine("Wysłane: {0}", message);
-
         }
         public void Stop()
         {

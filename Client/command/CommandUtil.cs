@@ -11,13 +11,17 @@ namespace Client.util
         {
             Console.WriteLine("Wpisz komendę(ping, chat lub file)");
             string command = Console.ReadLine();
-            if (command.Contains("ping "))
+            if (command.Split()[0] == "ping")
             {
                 Ping.Command(client,command);
             }
-            else if (command.Contains("chat "))
+            else if (command.Split()[0] == "chat")
             {
                 ChatCommand.Msg(client, command);
+            }
+            else if(command.Split()[0] == "file")
+            {
+                FileCommand.Command(client, command);
             }
             else
             {

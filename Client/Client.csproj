@@ -49,6 +49,7 @@
     <Compile Include="Clients\TcpClients.cs" />
     <Compile Include="Clients\UdpClients.cs" />
     <Compile Include="command\ChatCommand.cs" />
+    <Compile Include="command\FileCommand.cs" />
     <Compile Include="command\Ping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="command\CommandUtil.cs" />

@@ -56,6 +56,7 @@ namespace Server
             var server = new Server();
             server.AddServiceModule("ping", new PingPongService());
             server.AddServiceModule("chat", new ChatService());
+            server.AddServiceModule("file", new FileService());
             server.Start();
             server.AddListener(new TCPListener());
             server.AddListener(new UDPListener());
