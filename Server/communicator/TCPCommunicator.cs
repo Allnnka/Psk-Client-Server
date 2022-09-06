@@ -15,7 +15,6 @@ namespace Server.communicator
         public void Start(CommandD onCommand, CommunicatorD onDisconnect)
         {
             Console.WriteLine("TCP communicator start");
-
             NetworkStream networkStream = client.GetStream();
             byte[] bytes = new byte[256];
             string data = string.Empty;
@@ -23,7 +22,6 @@ namespace Server.communicator
             {
                 try
                 {
-
                     if (networkStream.DataAvailable)
                     {
                         int len = networkStream.Read(bytes, 0, bytes.Length);

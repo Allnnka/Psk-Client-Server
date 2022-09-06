@@ -60,7 +60,7 @@ namespace Server
             server.Start();
             server.AddListener(new TCPListener());
             server.AddListener(new UDPListener());
-            //server.AddListener(new RS232Listener());
+            server.AddListener(new RS232Listener());
             while (true) { }
         }
     }

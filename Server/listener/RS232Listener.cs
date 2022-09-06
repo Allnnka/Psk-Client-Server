@@ -11,14 +11,16 @@ namespace Server.listener
     public class RS232Listener : IListener
     {
         private SerialPort serialPort;
+        private CommunicatorD onConnect;
 
         public RS232Listener()
         {
+            serialPort = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
         }
         public void Start(CommunicatorD onConnect)
         {
             Console.WriteLine("RS232 listener start");
-            serialPort = new SerialPort("COM1", 9600, Parity.None, 8, StopBits.One);
+            this.onConnect = onConnect;
             onConnect(new RS232Communicator(serialPort));
         }
 

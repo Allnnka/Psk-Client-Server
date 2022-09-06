@@ -13,7 +13,7 @@ namespace Client.util
             string command = Console.ReadLine();
             if (command.Split()[0] == "ping")
             {
-                Ping.Command(client,command);
+                Ping.Command(client, command);
             }
             else if (command.Split()[0] == "chat")
             {
@@ -25,7 +25,7 @@ namespace Client.util
             }
             else
             {
-                Console.WriteLine("Wprowadzono niepoprawną komendę {0}",command);
+                Console.WriteLine("Wprowadzono niepoprawną komendę {0}", command);
             }
             getCommand(client);
         }

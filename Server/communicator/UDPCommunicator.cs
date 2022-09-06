@@ -24,20 +24,26 @@ namespace Server.communicator
 
         public void Start(CommandD onCommand, CommunicatorD onDisconnect)
         {
-            Console.WriteLine("TCP communicator start");
-
-            string hi = "Witam tu server";
-            byte[] bytesHi = Encoding.ASCII.GetBytes(hi);
-            while (true)
+            Console.WriteLine("UDP communicator start");
+            byte[] resByte = new byte[256];
+            new Task(() =>
             {
-                byte[] bytes = client.Receive(ref ip);
-                string res = Encoding.ASCII.GetString(bytes);
-                Console.WriteLine($"Otrzymano {res} z adresu {ip.Address}, port {ip.Port}");
-                client.Send(bytesHi, bytesHi.Length, ip);
-                Console.WriteLine($"Wysłano {hi} do adresu {ip.Address}, port {ip.Port}");
-                break;
-            }
-            client.Close();
+                while (true)
+                {
+                    byte[] bytes = client.Receive(ref ip);
+                    string res = Encoding.ASCII.GetString(bytes);
+                    Console.WriteLine($"Otrzymano {res} z adresu {ip.Address}, port {ip.Port}");
+                    if (res != string.Empty)
+                    {
+                        string message = onCommand(res);
+                        resByte = Encoding.ASCII.GetBytes(message);
+                        client.Send(resByte, resByte.Length, ip);
+                        Console.WriteLine($"Wysłano {resByte} do adresu {ip.Address}, port {ip.Port}");
+                        res = String.Empty;
+                    }
+                }
+            }).Start();
+            
         }
 
         public void Stop()

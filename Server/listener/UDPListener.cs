@@ -19,7 +19,6 @@ namespace Server.listener
             server = new UdpClient(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 12312));
             onConnect(new UDPCommunicator(server));
         }
-
         public void Stop()
         {
             server.Close();
