@@ -1,5 +1,6 @@
 ﻿using Client.Clients;
 using Client.util;
+using Share;
 using System;
 using System.IO.Ports;
 using System.Net;
@@ -23,6 +24,8 @@ namespace Client
                 Console.WriteLine("1. TCP");
                 Console.WriteLine("2. UDP");
                 Console.WriteLine("3. RS-232");
+                Console.WriteLine("4. .Net Remoting");
+                Console.WriteLine("5. File");
                 Console.WriteLine("0. EXIT");
 
                 int option;
@@ -48,6 +51,15 @@ namespace Client
                     case 3:
                         SerialPort serialPort = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);
                         iclient = new RS232Clients(serialPort);
+                        exit = true;
+                        break;
+                    case 4:
+                        DotNetRemotingClass dotNetRemotingClass = (DotNetRemotingClass)Activator.GetObject(typeof(DotNetRemotingClass), "tcp://localhost:8085/netRemoting");
+                        iclient = new DotNetRemotingClients(dotNetRemotingClass);
+                        exit = true;
+                        break;
+                    case 5:
+                        iclient = new FileClients();
                         exit = true;
                         break;
                 }

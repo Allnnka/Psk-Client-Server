@@ -44,6 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client.cs" />
+    <Compile Include="Clients\DotNetRemotingClients.cs" />
+    <Compile Include="Clients\FileClients.cs" />
     <Compile Include="Clients\IClient.cs" />
     <Compile Include="Clients\RS232Clients.cs" />
     <Compile Include="Clients\TcpClients.cs" />

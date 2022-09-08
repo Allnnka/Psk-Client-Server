@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DotNetRemotingClass.cs" />
     <Compile Include="FileClass.cs" />
     <Compile Include="PingClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
