@@ -21,6 +21,7 @@ namespace Server.communicator
 
         public void Start(CommandD onCommand, CommunicatorD onDisconnect)
         {
+            Thread.Sleep(30);
             using (StreamReader streamReader = new StreamReader(fullPath))
             {
                 string line;
@@ -31,7 +32,6 @@ namespace Server.communicator
                 }
                 streamReader.Close();
             }
-            
         }
 
         public void Stop()

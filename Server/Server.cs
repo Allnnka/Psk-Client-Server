@@ -11,10 +11,20 @@ namespace Server
         List<IListener> listeners = new List<IListener>();
         List<ICommunicator> communicators = new List<ICommunicator>();
 
+        bool isServerStarted = false;
+        private object lockCommunicator = new object();
+        private object lockListener = new object();
         void AddCommunicator(ICommunicator communicator)
         {
-            communicators.Add(communicator);
-            communicator.Start(new CommandD(Answer), RemoveCommunicator);
+            lock(lockCommunicator)
+            {
+                if (isServerStarted)
+                {
+                    communicators.Add(communicator);
+                    communicator.Start(new CommandD(Answer), RemoveCommunicator);
+                }
+            }
+           
         }
         private string Answer(string command)
         {
@@ -38,11 +48,19 @@ namespace Server
 
         void AddListener(IListener listener)
         {
-            listeners.Add(listener);
-            listener.Start(new CommunicatorD(AddCommunicator));
+            lock(lockListener)
+            {
+                if (isServerStarted)
+                {
+                    listeners.Add(listener);
+                    listener.Start(new CommunicatorD(AddCommunicator));
+                }
+            }
+            
         }
         void Start()
         {
+            isServerStarted = true;
             for (int i = 0; i < listeners.Count; i++)
                 listeners[i].Start(new CommunicatorD(AddCommunicator));
         }

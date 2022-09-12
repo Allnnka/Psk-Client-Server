@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
+﻿using System.IO;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace Client.Clients
 {
@@ -18,7 +13,7 @@ namespace Client.Clients
         {
             File.WriteAllText(clientPath, command);
 
-            Thread.Sleep(20);
+            Thread.Sleep(30);
 
             using (StreamReader streamReader = new StreamReader(serverPath))
             {
